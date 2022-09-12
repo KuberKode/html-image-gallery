@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,IAAI;EACA,WAAW,EAAE,4BAA4B",
+"sources": ["html-gallery.scss"],
+"names": [],
+"file": "html-gallery.css"
+}

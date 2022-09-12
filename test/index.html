@@ -1,0 +1,18 @@
+<!DOCTYPE html><html>
+    <head>
+        <title>HTML Image Gallery</title>
+        <link rel="stylesheet" href="../src/html-gallery.css?v=0.001" type="text/css" />
+        <script type="text/javascript" src="../src/html-gallery.js?v=0.001"></script>
+    </head>
+    <body>
+        <h1>HTML Image Gallery</h1>
+        <script type="text/javascript">
+            const g = new HtmlGallery({
+                "base":"images/",
+                "images":["IMG2.JPG","IMG3.JPG","IMG2.JPG","IMG3.JPG","IMG2.JPG","IMG3.JPG","IMG2.JPG","IMG3.JPG","IMG2.JPG","IMG3.JPG"]
+            });
+
+            g.LoadNextImage();
+        </script>
+    </body>
+</html>
