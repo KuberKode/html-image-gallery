@@ -55,15 +55,29 @@ class HtmlGallery{
             _G.imgPreview.classList.add("img-preview");
             _G.imgPreview.classList.add("hide");
 
+            _G.imgLoader = document.createElement("div");
+            _G.imgLoader.classList.add("loader");
+            _G.imgLoader.classList.add("hide");
+
+            _G.imgPreview.appendChild(_G.imgLoader);
+
             _G.previewImg = new Image();
             _G.previewImg.classList.add("preview-img");
+            _G.previewImg.classList.add("hide");
             _G.previewImg.onclick = function(){return false;}
+
+            _G.previewImg.onload = function(){
+                _G.imgLoader.classList.add("hide");
+                _G.previewImg.classList.remove("hide");
+            }
 
             _G.imgPreview.appendChild(_G.previewImg);
 
             _G.lightbox.onclick = function(){
+                
                 _G.lightbox.classList.add("hide");
                 _G.imgPreview.classList.add("hide");
+                _G.imgPreview.classList.remove("flex");
             }
 
             let firstChild = document.body.firstChild;
@@ -106,9 +120,16 @@ class HtmlGallery{
             }
 
             _G.PreviewImage = function(img){
-                _G.previewImg.src = _G.base + img;
+
+                _G.previewImg.classList.add("hide");
+
                 _G.lightbox.classList.remove("hide");
                 _G.imgPreview.classList.remove("hide");
+                _G.imgLoader.classList.remove("hide");
+
+                _G.imgPreview.classList.add("flex");
+
+                _G.previewImg.src = _G.base + img;
             }
 
             _G.LoadImage = function(img, callback){
