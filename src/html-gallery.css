@@ -20,7 +20,11 @@ html, body {
   display: flex; }
 
 .html-gallery {
-  margin: 1%; }
+  margin: 1%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  grid-gap: 10px; }
 
 h1 {
   margin-left: 1%; }
@@ -30,16 +34,16 @@ h1 {
 
 .img-preview {
   margin: 0 auto;
-  margin-top: 1%;
+  margin-top: 128px;
   padding: 1%;
-  width: 1024px;
-  height: 768px;
+  position: relative;
   background-color: #EFEFEF;
-  position: absolute;
-  top: 0;
-  left: 0;
-  justify-content: center;
-  align-items: center; }
+  width: 60%;
+  height: auto; }
+
+.img-preview-main {
+  border: 0;
+  padding: 0; }
 
 .preview-img {
   width: 100%;
@@ -53,11 +57,13 @@ h1 {
   align-items: center; }
 
 .loader {
-  width: 128px;
-  height: 128px;
+  margin: 25% auto;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   box-sizing: border-box;
   border: 6px solid #CCCCCC;
+  border-left-color: #FF0066;
   border-right-color: #FF0066;
   animation: loading-animation 1s linear infinite; }
 
@@ -66,5 +72,11 @@ h1 {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+@media only screen and (orientation: portrait) {
+  .html-gallery {
+    grid-template-columns: repeat(3, 2fr); }
+
+  .img-preview {
+    width: 96%; } }
 
 /*# sourceMappingURL=html-gallery.css.map */

@@ -77,18 +77,13 @@ class HtmlGallery{
                 
                 _G.lightbox.classList.add("hide");
                 _G.imgPreview.classList.add("hide");
-                _G.imgPreview.classList.remove("flex");
+
+                _G.gallery.classList.remove("hide");
             }
 
             let firstChild = document.body.firstChild;
             document.body.insertBefore(_G.lightbox, firstChild);
             document.body.insertBefore(_G.imgPreview,firstChild);
-
-            console.log( document.body.offsetWidth + "x" + document.body.offsetHeight );
-           
-            _G.imgPreview.style.top = ( ( document.body.offsetHeight - (_G.previewHeight + 20) ) / 2 ) + "px";
-            _G.imgPreview.style.left = ( ( document.body.offsetWidth - _G.previewWidth ) / 2 ) + "px";
-            
 
             if(typeof options != 'undefined'){
 
@@ -101,10 +96,13 @@ class HtmlGallery{
                     _G.base = options.base;
                 }
 
+                if(typeof options.preview != 'undefined'){
+                    _G.basePreview = _G.base + options.preview;
+                }
+
                 if(typeof options.images != 'undefined'){
                     _G.images = options.images;
                     _G.baseThumbs = _G.base + 'thumbs/';
-                    _G.basePreview = _G.base + 'preview/';
                 }
 
                 if(typeof options.autoLoad != 'undefined'){
@@ -122,14 +120,13 @@ class HtmlGallery{
             _G.PreviewImage = function(img){
 
                 _G.previewImg.classList.add("hide");
+                _G.gallery.classList.add("hide");
 
                 _G.lightbox.classList.remove("hide");
                 _G.imgPreview.classList.remove("hide");
                 _G.imgLoader.classList.remove("hide");
 
-                _G.imgPreview.classList.add("flex");
-
-                _G.previewImg.src = _G.base + img;
+                _G.previewImg.src = _G.basePreview + img;
             }
 
             _G.LoadImage = function(img, callback){
